@@ -10,7 +10,7 @@
     th { background-color: #f0f0f0; }
     h2 { text-align: center; }
     button { margin-top: 20px; padding: 10px 20px; }
-    pre { white-space: pre-wrap; background: #f9f9f9; padding: 10px; border: 1px solid #ccc; }
+    pre { white-space: pre-wrap; background: #f9f9f9; padding: 10px; border: 1px solid #ccc; text-align: left; }
   </style>
 </head>
 <body>
@@ -21,8 +21,8 @@
         <tr>
           <th> </th>
           <th>Yes</th>
-          <th colspan="3">Severity<br><small>(1 = Mild, 2 = Moderate, 3 = Severe)</small></th>
-          <th colspan="6">Caregiver Distress<br><small>(0 = Not at all to 5 = Extremely)</small></th>
+          <th colspan="4">Severity<br><small>(0=None, 1=Mild, 2=Mod, 3=Severe)</small></th>
+          <th colspan="6">Caregiver Distress<br><small>(0=Not at all → 5=Extremely)</small></th>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +37,7 @@
             document.write('<tr>');
             document.write(`<td>${item}</td>`);
             document.write(`<td><input type="checkbox" class="yes-check" data-index="${i}"></td>`);
-            for (let j = 1; j <= 3; j++) {
+            for (let j = 0; j <= 3; j++) {
               document.write(`<td><input type="radio" class="severity" disabled name="severity_${i}" value="${j}"></td>`);
             }
             for (let j = 0; j <= 5; j++) {
@@ -48,7 +48,7 @@
         </script>
         <tr>
           <th colspan="2">TOTAL</th>
-          <td colspan="3" id="severity-total"></td>
+          <td colspan="4" id="severity-total"></td>
           <td colspan="6" id="distress-total"></td>
         </tr>
       </tbody>
